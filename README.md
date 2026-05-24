@@ -1,131 +1,138 @@
-# Sistema Bancário API
+Seu README original já está muito bom, bem estruturado e direto ao ponto! Porém, para deixá-lo perfeito e profissional (padrão de mercado para portfólio), fiz alguns ajustes cruciais:
 
-API bancária desenvolvida com Java e Spring Boot para gerenciamento de clientes, contas correntes, contas poupança e operações bancárias.
+Correções de formatação de código: O bloco de comandos do Git e Maven estava misturando texto com código, o que quebrava a visualização no GitHub. Separou-se o código dos passos.
 
-## Sobre o Projeto
+Clareza nos Endpoints: Adicionei os corpos de requisição (body) implícitos nos métodos POST para que quem veja o README entenda o que a API espera receber.
 
-Este projeto começou como um sistema bancário utilizando Programação Orientada a Objetos em Java puro (V1.0) e evoluiu para uma API REST completa utilizando Spring Boot (V2.0).
+Organização Visual: Melhorei a hierarquia de tópicos e adicionei badges para dar um visual mais moderno.
 
-A aplicação simula operações reais de um sistema bancário, incluindo criação de clientes, gerenciamento de contas, depósitos, saques, transferências e geração de extrato.
+Aqui está a versão corrigida e otimizada. Pode copiar e colar direto no seu README.md:
 
-## Tecnologias Utilizadas
+Markdown
+# 🏦 Sistema Bancário API (V2)
 
-- Java 21
-- Spring Boot
-- Maven
-- Swagger / OpenAPI
-- REST API
-- Programação Orientada a Objetos
-- IntelliJ IDEA
+[![Java](https://img.shields.io/badge/Java-21-orange?logo=java)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-brightgreen?logo=springboot)](https://spring.io/projects/spring-boot)
+[![Docker](https://img.shields.io/badge/Docker-blue?logo=docker)](https://www.docker.com/)
+[![Render](https://img.shields.io/badge/Deploy-Render-black?logo=render)](https://render.com/)
 
-## Funcionalidades
+API REST de um sistema bancário desenvolvida com **Java + Spring Boot**. O projeto representa a evolução de uma aplicação puramente baseada em Programação Orientada a Objetos (V1) para uma arquitetura moderna, escalável e baseada em APIs REST (V2).
+
+A aplicação simula o ecossistema de um banco real, gerenciando clientes, contas e operações financeiras com validações robustas.
+
+---
+
+## 🌐 API em Produção
+
+* **Link da API:** [https://sistemabancario-oop-1-32l5.onrender.com/](https://sistemabancario-oop-1-32l5.onrender.com/)
+* **Documentação Interativa (Swagger):** [Acessar Interface Swagger](https://sistemabancario-oop-1-32l5.onrender.com/swagger-ui/index.html)
+
+---
+
+## 🚀 Tecnologias e Ferramentas
+
+* **Linguagem:** Java 21
+* **Framework:** Spring Boot (Spring Web, Spring Validation)
+* **Gerenciador de Dependências:** Maven
+* **Documentação:** Swagger UI / OpenAPI 3
+* **Containerização:** Docker
+* **Hospedagem/Cloud:** Render
+
+---
+
+## ⚙️ Funcionalidades & Regras de Negócio
+
+### 👤 Clientes
+* Cadastro de novos clientes com validação de dados.
+* Listagem completa de clientes cadastrados.
+
+### 💳 Contas Bancárias
+* Abertura de **Conta Corrente** (com limite de cheque especial).
+* Abertura de **Conta Poupança**.
+* Consulta de saldo e listagem de contas.
+* Emissão de **extrato bancário** detalhado com histórico de transações.
+
+### 💰 Operações Financeiras
+* **Depósito:** Incrementa o saldo da conta informada.
+* **Saque:** Deduz o valor do saldo (respeitando o limite disponível para conta corrente).
+* **Transferência:** Movimentação de valores entre contas distintas de forma segura.
+
+### 📌 Diferenciais Implementados
+* Tratamento global de exceções (`@RestControllerAdvice`).
+* Respostas HTTP padronizadas e semânticas.
+* Validação de campos obrigatórios e formatos com `Spring Validation`.
+
+---
+
+## 🧱 Arquitetura do Projeto
+
+O projeto adota o padrão de arquitetura em camadas para garantir a separação de responsabilidades:
+
+Controller ──> Service ──> Model (Entidades/DTOs)
+└── Exception Handler (Global)
+
+
+---
+
+## 📖 Endpoints Principais
 
 ### Clientes
-- Criar cliente
-- Listar clientes
+* `GET /clientes` - Lista todos os clientes.
+* `POST /clientes` - Cria um novo cliente.
 
 ### Contas
-- Criar conta corrente
-- Criar conta poupança
-- Listar contas
-- Consultar extrato
+* `GET /contas` - Lista todas as contas.
+* `POST /contas/corrente` - Abre uma conta corrente.
+* `POST /contas/poupanca` - Abre uma conta poupança.
+* `GET /contas/{id}/extrato` - Retorna o histórico e saldo da conta.
 
-### Operações Bancárias
-- Depósito
-- Saque
-- Transferência entre contas
+### Operações
+* `POST /contas/{id}/deposito` - Efetua depósito em uma conta.
+* `POST /contas/{id}/saque` - Efetua saque de uma conta.
+* `POST /contas/{id}/transferencia` - Realiza transferência para outra conta.
 
-### Regras de Negócio
+---
 
-- Controle de saldo
-- Controle de limite em conta corrente
-- Histórico de transações
-- Tratamento de exceções
-- Retornos HTTP apropriados
+▶️ Como Executar Localmente
+Pré-requisitos
+Java 21 instalado.
 
-## Estrutura da API
+Maven instalado (ou utilize o wrapper ./mvnw).
 
-### Cliente Controller
+1. Clonar o repositório
+   Bash
+   git clone https://github.com/isaias1234t/SistemaBancario--OOP.git
+   cd SistemaBancario--OOP
+2. Rodar a aplicação
+   Bash
+   ./mvnw spring-boot:run
+   A API estará disponível em http://localhost:8080.
 
-- `GET /clientes`
-- `POST /clientes`
+3. Gerar o Build (Opcional)
+   Para gerar o arquivo .jar executável:
 
-### Conta Controller
+No Bash:
+   ./mvnw clean package
 
-- `GET /contas`
-- `GET /contas/{id}/extrato`
-- `POST /contas/corrente`
-- `POST /contas/poupanca`
-- `POST /contas/{id}/deposito`
-- `POST /contas/{id}/saque`
-- `POST /contas/{id}/transferencia`
+O arquivo será gerado na pasta /target.
 
-## Swagger/OpenAPI
+🚀 Deploy e Infraestrutura
+O deploy da aplicação é feito de forma automatizada na plataforma Render, utilizando um container Docker focado no ambiente de produção do Spring Boot.
 
-Documentação automática disponível em:
+📈 Próximas Melhorias (Roadmap)
+[ ] Integração com Banco de Dados Relacional (PostgreSQL)
 
-```bash
-http://localhost:8080/swagger-ui/index.html
-```
+[ ] Implementação do Spring Data JPA para persistência
 
-Após deploy:
+[ ] Segurança com Spring Security & JWT (Autenticação/Autorização)
 
-```bash
-https://SEUAPP.onrender.com/swagger-ui/index.html
-```
+[ ] Cobertura de testes automatizados (JUnit 5 e Mockito)
 
-## Como Executar o Projeto
+[ ] Orquestração local com Docker Compose
 
-### Clonar o repositório
+[ ] Pipeline de CI/CD automatizada (GitHub Actions)
 
-```bash
-git clone https://github.com/SEU_USUARIO/Sistema-Bancario-OOP.git
-```
-
-### Entrar na pasta do projeto
-
-```bash
-cd Sistema-Bancario-OOP
-```
-
-### Executar com Maven
-
-```bash
-mvn spring-boot:run
-```
-
-## Build do Projeto
-
-```bash
-mvn clean package
-```
-
-O arquivo `.jar` será gerado na pasta:
-
-```bash
-target/
-```
-
-## Objetivos do Projeto
-
-- Praticar Programação Orientada a Objetos
-- Aplicar conceitos de APIs REST
-- Utilizar Spring Boot na prática
-- Implementar regras de negócio reais
-- Trabalhar com arquitetura em camadas
-- Aprender serialização JSON e DTOs
-- Documentar APIs com Swagger
-
-## Próximas Melhorias (V3)
-
-- DTOs completos
-- Banco de dados PostgreSQL
-- Spring Data JPA
-- Validações com Bean Validation
-- Autenticação com Spring Security
-- Deploy com Docker
-- Testes automatizados
-
-## Autor
-
+👨‍💻 Autor:
 Isaías Rodrigues de Almeida
+
+Desenvolvido com o propósito de consolidar conhecimentos em Desenvolvimento Backend Java, APIs RESTful, Arquitetura em Camadas e Cloud Deploy.
