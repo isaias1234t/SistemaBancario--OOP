@@ -11,5 +11,5 @@ public class TransferenciaDTO {
     @Positive(message = "O Valor deve ser maior que zero.")
     private double valor;
     @Positive(message = "O número da Conta Destino deve ser maior que zero.\"")
-    private int numeroContaDestino;
+    private Long numeroContaDestino;
 }

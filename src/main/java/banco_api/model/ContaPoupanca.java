@@ -2,12 +2,17 @@ package banco_api.model;
 
 import banco_api.exception.SaldoInsuficienteException;
 import banco_api.exception.ValorInvalidoException;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 
+@Entity
+@DiscriminatorValue("POUPANCA")
 public class ContaPoupanca extends ContaBancaria{
     private double taxaRendimento;
 
-    public ContaPoupanca(int numero, Cliente cliente, double taxaRendimento) {
-        super(numero, cliente);
+    public ContaPoupanca(Pessoa pessoa, double taxaRendimento) {
+        super(pessoa);
         this.taxaRendimento = taxaRendimento;
     }
 

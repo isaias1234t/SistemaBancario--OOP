@@ -2,12 +2,17 @@ package banco_api.model;
 
 import banco_api.exception.SaldoInsuficienteException;
 import banco_api.exception.ValorInvalidoException;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 
+@Entity
+@DiscriminatorValue("CORRENTE")
 public class ContaCorrente extends ContaBancaria {
     private double limite;
 
-    public ContaCorrente(int numero, Cliente cliente, double limite) {
-        super(numero, cliente);
+    public ContaCorrente(Pessoa pessoa, double limite) {
+        super(pessoa);
         this.limite = limite;
     }
 

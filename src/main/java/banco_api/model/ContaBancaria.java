@@ -1,22 +1,35 @@
 package banco_api.model;
 import banco_api.exception.SaldoInsuficienteException;
 import banco_api.exception.ValorInvalidoException;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-
+@NoArgsConstructor
+@Entity
+@Table (name = "contas")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn (name = "tipo")
 public abstract class ContaBancaria {
-    private int numero;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long numero;
+
     protected double saldo;
     private boolean ativa;
-    private Cliente cliente;
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "conta_numero")
     private List<Transacao> transacoes;
 
-    public ContaBancaria(int numero, Cliente cliente){
-    this.numero = numero;
-    this.cliente = cliente;
+    public ContaBancaria(Pessoa pessoa){
+    this.pessoa = pessoa;
     this.saldo = 0;
     this.ativa = true;
     this.transacoes = new ArrayList<>();

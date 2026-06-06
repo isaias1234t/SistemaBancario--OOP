@@ -1,21 +1,27 @@
 package banco_api.model;
 
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
-@Setter
 @NoArgsConstructor
+@Entity
+@Table(name = "pessoas")
+@Inheritance (strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn (name = "tipo")
 public class Pessoa {
-    private String nome;
-    private String cpf;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String telefone;
 
-    public Pessoa(String nome, String cpf, String telefone) {
-        this.nome = nome;
-        this.cpf = cpf;
+    public Pessoa(String telefone) {
+
         this.telefone = telefone;
     }
 

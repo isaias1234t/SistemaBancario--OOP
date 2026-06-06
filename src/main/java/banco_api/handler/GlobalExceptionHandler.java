@@ -18,6 +18,13 @@ public class GlobalExceptionHandler {
                 .body(ex.getMessage());
 
     }
+    @ExceptionHandler(CredenciaisInvalidasException.class)
+    public ResponseEntity<String> handleCredenciaisInvalidasException(CredenciaisInvalidasException ex){
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(ex.getMessage());
+
+    }
     @ExceptionHandler(ContaNaoEncontradaException.class)
     public ResponseEntity<String> handleContaNaoEncontrada(ContaNaoEncontradaException ex){
         return ResponseEntity

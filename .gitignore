@@ -40,3 +40,4 @@ target/
 140326/
 190326/
 SistemaBancario/
+.env
