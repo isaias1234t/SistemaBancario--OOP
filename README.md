@@ -9,10 +9,7 @@
 [![JUnit5](https://img.shields.io/badge/Tests-JUnit5%20%2B%20Mockito-green?logo=junit5)](https://junit.org/junit5/)
 
 API REST de um sistema bancário desenvolvida com **Java 21 + Spring Boot 3**. A V3 representa a evolução completa da aplicação, adicionando persistência real com **JPA/Hibernate + PostgreSQL**, autenticação segura com **Spring Security + JWT** e cobertura de testes com **JUnit 5 + Mockito**.
-
-> 📌 Versões anteriores: [V1 — POO pura](https://github.com/isaias1234t/SistemaBancario--OOP) · [V2 — API REST em memória](https://github.com/isaias1234t/SistemaBancario--OOP)
-
----
+ 
 
 ## 🌐 API em Produção
 
