@@ -13,7 +13,6 @@
 
 API REST de um sistema bancário desenvolvida com **Java 21 + Spring Boot 3**. A V4 adiciona o stack completo de **observabilidade** com logs estruturados em JSON, métricas em tempo real e tracing distribuído — pilares fundamentais de qualquer aplicação em produção.
 
-> 📌 Versões anteriores: [V1 — POO pura](https://github.com/isaias1234t/SistemaBancario--OOP) · [V2 — API REST em memória](https://github.com/isaias1234t/SistemaBancario--OOP)
 
 ---
 
