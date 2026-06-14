@@ -2,10 +2,12 @@ package banco_api.model;
 
 import banco_api.exception.SaldoInsuficienteException;
 import banco_api.exception.ValorInvalidoException;
-import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import lombok.NoArgsConstructor;
 
+
+@NoArgsConstructor
 @Entity
 @DiscriminatorValue("POUPANCA")
 public class ContaPoupanca extends ContaBancaria{

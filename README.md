@@ -1,4 +1,4 @@
-# 🏦 Sistema Bancário API (V3)
+# 🏦 Sistema Bancário API (V4)
 
 [![Java](https://img.shields.io/badge/Java-21-orange?logo=java)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-brightgreen?logo=springboot)](https://spring.io/projects/spring-boot)
@@ -7,8 +7,11 @@
 [![Docker](https://img.shields.io/badge/Docker-blue?logo=docker)](https://www.docker.com/)
 [![Render](https://img.shields.io/badge/Deploy-Render-black?logo=render)](https://render.com/)
 [![JUnit5](https://img.shields.io/badge/Tests-JUnit5%20%2B%20Mockito-green?logo=junit5)](https://junit.org/junit5/)
+[![Prometheus](https://img.shields.io/badge/Metrics-Prometheus-orange?logo=prometheus)](https://prometheus.io/)
+[![Grafana](https://img.shields.io/badge/Dashboard-Grafana-orange?logo=grafana)](https://grafana.com/)
+[![Zipkin](https://img.shields.io/badge/Tracing-Zipkin-yellow)](https://zipkin.io/)
 
-API REST de um sistema bancário desenvolvida com **Java 21 + Spring Boot 3**. A V3 representa a evolução completa da aplicação, adicionando persistência real com **JPA/Hibernate + PostgreSQL**, autenticação segura com **Spring Security + JWT** e cobertura de testes com **JUnit 5 + Mockito**.
+API REST de um sistema bancário desenvolvida com **Java 21 + Spring Boot 3**. A V4 adiciona o stack completo de **observabilidade** com logs estruturados em JSON, métricas em tempo real e tracing distribuído — pilares fundamentais de qualquer aplicação em produção.
 
 > 📌 Versões anteriores: [V1 — POO pura](https://github.com/isaias1234t/SistemaBancario--OOP) · [V2 — API REST em memória](https://github.com/isaias1234t/SistemaBancario--OOP)
 
@@ -33,9 +36,48 @@ API REST de um sistema bancário desenvolvida com **Java 21 + Spring Boot 3**. A
 | Autenticação | Spring Security + JSON Web Token (JWT) |
 | Testes | JUnit 5 + Mockito |
 | Documentação | Swagger UI / OpenAPI 3 |
-| Containerização | Docker |
+| Logs | Logback + Logstash Encoder (JSON estruturado) |
+| Métricas | Micrometer + Prometheus + Grafana |
+| Tracing | OpenTelemetry + Zipkin |
+| Containerização | Docker + Docker Compose |
 | Deploy | Render |
 | Gerenciador | Maven |
+
+---
+
+## 🔭 Observabilidade (V4)
+
+A V4 implementa os três pilares de observabilidade para aplicações em produção:
+
+### 📋 Logs Estruturados
+* Logs em formato **JSON** via Logback + Logstash Encoder.
+* Cada log contém `timestamp`, `level`, `logger_name`, `traceId` e `spanId` automaticamente.
+* Níveis semânticos: `INFO` para operações bem-sucedidas, `WARN` para comportamentos esperados, `ERROR` para falhas críticas.
+* Cobertura em `ContaService` (depósito, saque, transferência, criação de contas) e `GlobalExceptionHandler`.
+
+### 📊 Métricas em Tempo Real
+* **Micrometer** coleta métricas da JVM, HikariCP, HTTP e Logback automaticamente.
+* **Prometheus** raspa o endpoint `/actuator/prometheus` a cada 15 segundos.
+* **Grafana** exibe dashboard completo com CPU, memória heap, pool de conexões e estatísticas HTTP por endpoint.
+
+### 🔍 Tracing Distribuído
+* **OpenTelemetry** instrumenta automaticamente cada requisição com `traceId` e `spanId`.
+* **Zipkin** coleta e visualiza o caminho completo de cada requisição — tempo por camada (Security, Controller, Service, Repository).
+* 100% das requisições são rastreadas em ambiente de desenvolvimento (`sampling.probability=1.0`).
+
+### ▶️ Subindo o stack de observabilidade
+
+```bash
+docker-compose up -d
+```
+
+| Serviço | URL |
+|---|---|
+| Prometheus | http://localhost:9090 |
+| Grafana | http://localhost:3000 |
+| Zipkin | http://localhost:9411 |
+
+> Grafana: usuário `admin`, senha `admin`. Importe o dashboard **ID 19004** para visualização completa do Spring Boot.
 
 ---
 
@@ -70,6 +112,7 @@ API REST de um sistema bancário desenvolvida com **Java 21 + Spring Boot 3**. A
 * Respostas HTTP padronizadas e semânticas.
 * Validação de campos com Jakarta Validation (`@NotBlank`, `@Positive`).
 * 14 testes unitários cobrindo `PessoaService`, `ContaService` e `AuthService`.
+* Arquitetura em camadas com responsabilidades bem definidas — Controller delega, Service orquestra, Model encapsula regras.
 
 ---
 
@@ -81,6 +124,10 @@ Controller ──> Service ──> Repository ──> PostgreSQL (Neon)
      │         Exception Handler (Global)
      │
   JwtFilter ──> SecurityContextHolder
+     │
+  Micrometer ──> Prometheus ──> Grafana
+  OpenTelemetry ──> Zipkin
+  Logback ──> JSON estruturado
 ```
 
 ### Estrutura de pacotes
@@ -96,6 +143,10 @@ banco_api/
 ├── security/         # SecurityConfig
 ├── JwtFilter.java    # Filtro de validação JWT por requisição
 └── BancoApiApplication.java
+
+docker/
+└── prometheus.yml    # Configuração de scraping do Prometheus
+docker-compose.yml    # Prometheus + Grafana + Zipkin
 ```
 
 ---
@@ -124,6 +175,10 @@ banco_api/
 * `POST /contas/{id}/saque` — Efetua saque
 * `POST /contas/{id}/transferencia` — Realiza transferência
 
+### Observabilidade (público)
+* `GET /actuator/health` — Status da aplicação
+* `GET /actuator/prometheus` — Métricas para scraping
+
 ---
 
 ## 🔑 Como usar a autenticação no Swagger
@@ -142,7 +197,7 @@ banco_api/
 ### Pré-requisitos
 * Java 21
 * Maven
-* Docker (opcional)
+* Docker + Docker Compose
 * Conta no [Neon](https://neon.tech) para o banco PostgreSQL
 
 ### 1. Clonar o repositório
@@ -158,14 +213,19 @@ DATABASE_URL=jdbc:postgresql://seu-host.neon.tech/banco-api?sslmode=require
 JWT_SECRET=sua-chave-secreta-muito-longa-aqui-minimo-32-caracteres
 ```
 
-### 3. Rodar a aplicação
+### 3. Subir o stack de observabilidade
+```bash
+docker-compose up -d
+```
+
+### 4. Rodar a aplicação
 ```bash
 ./mvnw spring-boot:run
 ```
 
 A API estará disponível em `http://localhost:8080/swagger-ui/index.html`.
 
-### 4. Rodar via Docker
+### 5. Rodar via Docker
 ```bash
 docker build -t banco-api .
 docker run -p 8080:8080 \
@@ -174,7 +234,7 @@ docker run -p 8080:8080 \
   banco-api
 ```
 
-### 5. Rodar os testes
+### 6. Rodar os testes
 ```bash
 ./mvnw test
 ```
@@ -198,7 +258,8 @@ docker run -p 8080:8080 \
 |---|---|
 | V1 | POO pura em Java — sem framework |
 | V2 | API REST com Spring Boot — dados em memória |
-| **V3** | **JPA + PostgreSQL + JWT + Testes — produção real** |
+| V3 | JPA + PostgreSQL + JWT + Testes — produção real |
+| **V4** | **Observabilidade completa: Logs JSON + Prometheus/Grafana + Zipkin** |
 
 ---
 
@@ -209,4 +270,4 @@ docker run -p 8080:8080 \
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin)](https://www.linkedin.com/in/isaías-rodrigues-2156982a6/)
 [![GitHub](https://img.shields.io/badge/GitHub-black?logo=github)](https://github.com/isaias1234t)
 
-Desenvolvido com o propósito de consolidar conhecimentos em Desenvolvimento Backend Java, APIs RESTful, Segurança com JWT, Persistência com JPA/Hibernate e boas práticas de testes automatizados.
+Desenvolvido com o propósito de consolidar conhecimentos em Desenvolvimento Backend Java, APIs RESTful, Segurança com JWT, Persistência com JPA/Hibernate, boas práticas de testes automatizados e observabilidade em produção.

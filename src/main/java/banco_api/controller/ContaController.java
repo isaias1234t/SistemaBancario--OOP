@@ -44,23 +44,16 @@ public class ContaController {
 
     @PostMapping("/contas/{id}/saque")
     public ResponseEntity <ContaBancaria> saque(@PathVariable Long id, @Valid @RequestBody SaqueDTO saqueDTO){
-        ContaBancaria conta = contaService.buscarConta(id);
-        conta.sacar(saqueDTO.getValor());
-        return ResponseEntity.ok(conta);
+        return ResponseEntity.ok(contaService.sacar(id, saqueDTO.getValor()));
     }
 
     @PostMapping("/contas/{id}/transferencia")
     public ResponseEntity<ContaBancaria> transferencia(@PathVariable Long id, @Valid @RequestBody TransferenciaDTO transferenciaDTO){
-        ContaBancaria contaOrigem = contaService.buscarConta(id);
-        ContaBancaria contaDestino = contaService.buscarConta(transferenciaDTO.getNumeroContaDestino());
-        contaOrigem.transferir(contaDestino, transferenciaDTO.getValor());
-        return ResponseEntity.ok(contaOrigem);
+        return ResponseEntity.ok(contaService.transferir(transferenciaDTO, id, transferenciaDTO.getValor()));
     }
 
     @PostMapping("/contas/{id}/deposito")
     public ResponseEntity<ContaBancaria> deposito(@PathVariable Long id, @Valid @RequestBody DepositoDTO depositoDTO){
-        ContaBancaria conta = contaService.buscarConta(id);
-        conta.depositar(depositoDTO.getValor());
-        return ResponseEntity.ok(conta);
+        return ResponseEntity.ok(contaService.depositar(id, depositoDTO.getValor()));
     }
 }
