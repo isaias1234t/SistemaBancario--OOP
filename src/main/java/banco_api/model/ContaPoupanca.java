@@ -6,31 +6,33 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 
 @NoArgsConstructor
 @Entity
 @DiscriminatorValue("POUPANCA")
 public class ContaPoupanca extends ContaBancaria{
-    private double taxaRendimento;
+    private BigDecimal taxaRendimento;
 
-    public ContaPoupanca(Pessoa pessoa, double taxaRendimento) {
+    public ContaPoupanca(Pessoa pessoa, BigDecimal taxaRendimento) {
         super(pessoa);
         this.taxaRendimento = taxaRendimento;
     }
 
     @Override
-    public void sacar(double valor) {
-        if (valor <= 0) {
+    public void sacar(BigDecimal valor) {
+        if (valor.compareTo(BigDecimal.ZERO) <=0) {
             throw new ValorInvalidoException("Valor inválido.");
         }
-        if(valor > saldo){
+        if(valor.compareTo(saldo) >0){
             throw new SaldoInsuficienteException("Saldo insuficiente.");
         }
-        saldo -= valor;
+        this.saldo = this.saldo.subtract(valor);
         registrarTransacao(TipoTransacao.SAQUE, valor);
 
     }
     public void render(){
-        saldo += (saldo * taxaRendimento);
+        this.saldo = this.saldo.add(this.saldo.multiply(taxaRendimento));
     }
 }

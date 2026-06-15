@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public abstract class ContaBancaria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numero;
 
-    protected double saldo;
+    protected BigDecimal saldo;
     private boolean ativa;
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
@@ -30,26 +31,26 @@ public abstract class ContaBancaria {
 
     public ContaBancaria(Pessoa pessoa){
     this.pessoa = pessoa;
-    this.saldo = 0;
+    this.saldo = BigDecimal.ZERO;
     this.ativa = true;
     this.transacoes = new ArrayList<>();
     }
 
     //FUNÇÕES
-    public void depositar(double valor){
-        if(valor <= 0){
+    public void depositar(BigDecimal valor){
+        if(valor.compareTo(BigDecimal.ZERO) <= 0){
             throw new ValorInvalidoException("Erro, valor inválido! o valor a ser depositado DEVE ser maior que 0 (zero)!");
         }
-        this.saldo += valor;
+        this.saldo = this.saldo.add(valor);
         registrarTransacao(TipoTransacao.DEPOSITO, valor);
     }
-    public abstract void sacar(double valor);
+    public abstract void sacar(BigDecimal valor);
 
-    public void transferir (ContaBancaria destino, double valor){
-        if(valor <= 0) {
+    public void transferir (ContaBancaria destino, BigDecimal valor){
+        if(valor.compareTo(BigDecimal.ZERO) <= 0) {
             throw new ValorInvalidoException("Erro, valor inválido! o valor a ser transferido DEVE ser maior que 0 (zero)!");
         }
-        if(valor > this.getSaldo()){
+        if(valor.compareTo(this.getSaldo()) >0){
             throw new SaldoInsuficienteException(String.format("Erro! Seu saldo atualmente é de: R$%.2f, e sua tentativa de transferência é de R$%.2f. Por favor, insira um valor até R$%.2f.",
             this.getSaldo(), valor, this.getSaldo()));
         }
@@ -61,7 +62,7 @@ public abstract class ContaBancaria {
     }
 
 
-    protected void registrarTransacao(TipoTransacao tipo, double valor){
+    protected void registrarTransacao(TipoTransacao tipo, BigDecimal valor){
         Transacao t = new Transacao(tipo, valor);
         transacoes.add(t);
     }

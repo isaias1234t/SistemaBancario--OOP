@@ -9,6 +9,7 @@ import banco_api.repository.ContaRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Slf4j
@@ -50,7 +51,7 @@ public class ContaService {
     public List<ContaBancaria> listarContas() {
         return contaRepository.findAll();
     }
-    public ContaBancaria depositar(Long numero, double valor){
+    public ContaBancaria depositar(Long numero, BigDecimal valor){
         ContaBancaria contaQueRecebeDeposito = buscarConta(numero);
         contaQueRecebeDeposito.depositar(valor);
         contaRepository.save(contaQueRecebeDeposito);
@@ -58,7 +59,7 @@ public class ContaService {
         return contaQueRecebeDeposito;
     }
 
-    public ContaBancaria sacar(Long numero, double valor){
+    public ContaBancaria sacar(Long numero, BigDecimal valor){
         ContaBancaria contaQueSaca = buscarConta(numero);
         contaQueSaca.sacar(valor);
         contaRepository.save(contaQueSaca);
@@ -66,7 +67,7 @@ public class ContaService {
         return contaQueSaca;
     }
 
-    public ContaBancaria transferir (TransferenciaDTO dto, Long numero,double valor){
+    public ContaBancaria transferir (TransferenciaDTO dto, Long numero,BigDecimal valor){
         ContaBancaria origem = buscarConta(numero);
         ContaBancaria destino = buscarConta(dto.getNumeroContaDestino());
         origem.transferir(destino, valor);

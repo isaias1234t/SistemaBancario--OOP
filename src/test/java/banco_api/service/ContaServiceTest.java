@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,8 +22,6 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class ContaServiceTest {
-    @Mock
-    private PessoaRepository pessoaRepository;
 
     @Mock
     private ContaRepository contaRepository;
@@ -40,8 +39,8 @@ public class ContaServiceTest {
                 .thenReturn(pessoa);
 
 
-        CriarContaCorrenteDTO dto = new CriarContaCorrenteDTO(10, 1L, 161L);
-        ContaCorrente contaCorrente = new ContaCorrente(pessoa, 10);
+        CriarContaCorrenteDTO dto = new CriarContaCorrenteDTO(BigDecimal.valueOf(5), 1L, 161L);
+        ContaCorrente contaCorrente = new ContaCorrente(pessoa, BigDecimal.valueOf(5));
 
         when(contaRepository.save(any(ContaCorrente.class)))
                 .thenReturn(contaCorrente);
@@ -56,7 +55,7 @@ public class ContaServiceTest {
         when (pessoaService.buscarPessoa(99L))
                 .thenThrow(new ClienteNaoEncontradoException("Pessoa não encontrada!"));
 
-        CriarContaCorrenteDTO dto = new CriarContaCorrenteDTO(10, 99L, 161L);
+        CriarContaCorrenteDTO dto = new CriarContaCorrenteDTO(BigDecimal.valueOf(5), 99L, 161L);
 
         assertThrows(ClienteNaoEncontradoException.class, () -> {
             contaService.criarContaCorrente(dto);
@@ -69,8 +68,8 @@ public class ContaServiceTest {
         when(pessoaService.buscarPessoa(2L))
                 .thenReturn(pessoa);
 
-        CriarContaPoupancaDTO dto = new CriarContaPoupancaDTO(50L, 5L, 2L);
-        ContaPoupanca contaPoupanca = new ContaPoupanca(pessoa, 5L);
+        CriarContaPoupancaDTO dto = new CriarContaPoupancaDTO(50L, BigDecimal.valueOf(5), 2L);
+        ContaPoupanca contaPoupanca = new ContaPoupanca(pessoa, BigDecimal.valueOf(5));
 
         when(contaRepository.save(any(ContaPoupanca.class)))
                 .thenReturn(contaPoupanca);
@@ -86,7 +85,7 @@ public class ContaServiceTest {
         when(pessoaService.buscarPessoa(49L))
                 .thenThrow(new ClienteNaoEncontradoException("Pessoa não encontrada!"));
 
-        CriarContaPoupancaDTO dto = new CriarContaPoupancaDTO(132L, 2, 49L);
+        CriarContaPoupancaDTO dto = new CriarContaPoupancaDTO(132L, BigDecimal.valueOf(2), 49L);
 
         assertThrows(ClienteNaoEncontradoException.class, () -> {
             contaService.criarContaPoupanca(dto);
@@ -97,7 +96,7 @@ public class ContaServiceTest {
     void deveBuscarContaComSucesso(){
         PessoaFisica pessoa = new PessoaFisica("16999999999", "123.456.789-00", "Isaías");
         when(contaRepository.findById(1L))
-                .thenReturn(Optional.of(new ContaCorrente(pessoa, 350)));
+                .thenReturn(Optional.of(new ContaCorrente(pessoa, BigDecimal.valueOf(350))));
 
         ContaBancaria resultado = contaService.buscarConta(1L);
 

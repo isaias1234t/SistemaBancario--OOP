@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
@@ -15,10 +16,10 @@ public class Transacao {
     private Long id;
     @Enumerated(EnumType.STRING)
     private TipoTransacao tipo;
-    private double valor;
+    private BigDecimal valor;
     private LocalDateTime data;
 
-    public Transacao(TipoTransacao tipo, double valor){
+    public Transacao(TipoTransacao tipo, BigDecimal valor){
         this.tipo = tipo;
         this.valor = valor;
         this.data= LocalDateTime.now();
