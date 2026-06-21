@@ -63,6 +63,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.AuthServiceApplication.executor": "Run",
     "Spring Boot.BancoApiApplication.executor": "Run",
     "Spring Boot.ClienteServiceApplication.executor": "Run",
     "Spring Boot.ConfigServerApplication.executor": "Run",
@@ -70,17 +71,17 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/tiuus/OneDrive/Documentos/Projetos/banco-api/v6-microservices/cliente-service/src/main/java",
+    "last_opened_file_path": "C:/Users/tiuus/OneDrive/Documentos/Projetos/banco-api/v6-microservices/auth-service/src/main/java/banco_api/auth_service",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\auth-service\src\main\java\banco_api\auth_service" />
+      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\auth-service\src\main\java\banco_api\auth_service\service" />
+      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\auth-service\src\main\java\banco_api\auth_service\model" />
+      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\auth-service\src\main\java\banco_api\auth_service\dto" />
       <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\cliente-service\src\main\java" />
-      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\cliente-service\src\main\java\dto" />
-      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\cliente-service\src\main\java\model" />
-      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\cliente-service\src\main\java\repository" />
-      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\src\test" />
@@ -89,11 +90,11 @@
       <recent name="banco_api.cliente_service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="banco_api.auth_service.repository" />
+      <recent name="banco_api.auth_service.exception" />
+      <recent name="banco_api.auth_service.controller" />
       <recent name="exception" />
       <recent name="service" />
-      <recent name="security" />
-      <recent name="banco_api.dto" />
-      <recent name="banco_api.exception" />
     </key>
   </component>
   <component name="RunManager">

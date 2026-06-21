@@ -12,13 +12,14 @@
         <module name="cliente-service" />
         <module name="eureka-server" />
       </profile>
-      <profile name="Annotation profile for banco-api" enabled="true">
+      <profile name="Annotation profile for auth-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
+        <module name="auth-service" />
         <module name="banco-api" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
+      <module name="auth-service" options="-parameters" />
       <module name="banco-api" options="-parameters" />
       <module name="cliente-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
