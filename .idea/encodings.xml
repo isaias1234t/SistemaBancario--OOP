@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/v6-microservices/auth-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/v6-microservices/cliente-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/v6-microservices/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v6-microservices/conta-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/v6-microservices/eureka-server/src/main/java" charset="UTF-8" />
   </component>
 </project>

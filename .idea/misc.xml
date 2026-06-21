@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/v6-microservices/api-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/v6-microservices/cliente-service/pom.xml" />
         <option value="$PROJECT_DIR$/v6-microservices/auth-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v6-microservices/conta-service/pom.xml" />
       </list>
     </option>
   </component>
