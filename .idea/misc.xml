@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/v1-v5-monolito/pom.xml" />
         <option value="$PROJECT_DIR$/v6-microservices/config-server/pom.xml" />
         <option value="$PROJECT_DIR$/v6-microservices/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/v6-microservices/cliente-service/pom.xml" />
       </list>
     </option>
   </component>

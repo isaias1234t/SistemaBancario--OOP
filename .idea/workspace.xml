@@ -62,28 +62,38 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
     "Spring Boot.BancoApiApplication.executor": "Run",
+    "Spring Boot.ClienteServiceApplication.executor": "Run",
     "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.EurekaServerApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/tiuus/OneDrive/Documentos/Projetos/banco-api",
+    "last_opened_file_path": "C:/Users/tiuus/OneDrive/Documentos/Projetos/banco-api/v6-microservices/cliente-service/src/main/java",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\cliente-service\src\main\java" />
+      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\cliente-service\src\main\java\dto" />
+      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\cliente-service\src\main\java\model" />
+      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\cliente-service\src\main\java\repository" />
       <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api" />
-      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\banco-api\src\main\java\banco_api\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\src\test" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="banco_api.cliente_service" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="exception" />
+      <recent name="service" />
+      <recent name="security" />
       <recent name="banco_api.dto" />
       <recent name="banco_api.exception" />
-      <recent name="banco_api.service" />
     </key>
   </component>
   <component name="RunManager">
