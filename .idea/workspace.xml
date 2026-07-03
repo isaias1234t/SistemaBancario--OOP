@@ -4,11 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9054b1c6-d1f2-4373-8139-e19dd23b2c50" name="Changes" comment="feat: implementa v2 da API bancária com Spring Boot, controllers REST, Swagger e regras de negócio" />
+    <list default="true" id="9054b1c6-d1f2-4373-8139-e19dd23b2c50" name="Changes" comment="feat: implementa v2 da API bancária com Spring Boot, controllers REST, Swagger e regras de negócio">
+      <change afterPath="$PROJECT_DIR$/.idea/SistemaBancario--OOP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1-v5-monolito/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/v1-v5-monolito/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1-v5-monolito/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/v1-v5-monolito/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v6-microservices/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/v6-microservices/auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v6-microservices/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/v6-microservices/auth-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v6-microservices/cliente-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/v6-microservices/cliente-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v6-microservices/cliente-service/src/main/java/banco_api/cliente_service/ClienteServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/v6-microservices/cliente-service/src/main/java/banco_api/cliente_service/ClienteServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v6-microservices/cliente-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/v6-microservices/cliente-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v6-microservices/conta-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/v6-microservices/conta-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v6-microservices/conta-service/src/main/java/banco_api/conta_service/model/Transacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/v6-microservices/conta-service/src/main/java/banco_api/conta_service/model/Transacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v6-microservices/conta-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/v6-microservices/conta-service/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,8 +52,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/isaias1234t/SistemaBancario--OOP&quot;,
-    &quot;accountId&quot;: &quot;523551af-8124-4d24-9f93-1790b9670df9&quot;
+    &quot;url&quot;: &quot;https://github.com/isaias1234t/SistemaBancario--OOP.git&quot;,
+    &quot;accountId&quot;: &quot;095d9732-8b72-4ffb-9226-4839051e7f06&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -62,6 +82,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.ApiGatewayApplication.executor": "Run",
     "Spring Boot.AuthServiceApplication.executor": "Run",
     "Spring Boot.BancoApiApplication.executor": "Run",
@@ -69,20 +91,26 @@
     "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.ContaServiceApplication.executor": "Run",
     "Spring Boot.EurekaServerApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/tiuus/OneDrive/Documentos/Projetos/banco-api/v6-microservices/conta-service/src/main/java/banco_api/conta_service",
+    "last_opened_file_path": "/home/isaias/IdeaProjects/SistemaBancario--OOP/v6-microservices/auth-service",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/v6-microservices/auth-service" />
+      <recent name="$PROJECT_DIR$/v6-microservices/cliente-service" />
       <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\conta-service\src\main\java\banco_api\conta_service" />
       <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\conta-service\src\main\java\banco_api\conta_service\repository" />
       <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\conta-service\src\main\java\banco_api\conta_service\model" />
-      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\conta-service\src\main\java\banco_api\conta_service\exception" />
-      <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\v6-microservices\conta-service\src\main\java\banco_api\conta_service\dto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tiuus\OneDrive\Documentos\Projetos\banco-api\src\test" />
@@ -98,7 +126,7 @@
       <recent name="banco_api.auth_service.exception" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.BancoApiApplication">
     <configuration name="ContaServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="banco-api" />
       <extension name="coverage">
@@ -137,57 +165,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BancoApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <envs>
-        <env name="DATABASE_URL" value="jdbc:postgresql://neondb_owner:npg_nmLi9c1fUraq@ep-mute-mountain-aca291be-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&amp;channel_binding=require" />
-      </envs>
+    <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="envFilePaths">
-        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/v6-microservices/auth-service/.env" />
       </option>
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
-      <module name="banco-api" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="banco_api.BancoApiApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="banco_api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="net.ashald.envfile">
-        <option name="IS_ENABLED" value="true" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
-          <ENTRY IS_ENABLED="true" PARSER="env" IS_EXECUTABLE="false" PATH=".env" />
-        </ENTRIES>
-      </extension>
+      <module name="auth-service" />
+      <selectedOptions>
+        <option name="environmentVariables" />
+      </selectedOptions>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="banco_api.auth_service.AuthServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+    <configuration name="BancoApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="envFilePaths">
+        <option value="$PROJECT_DIR$/v1-v5-monolito/.env" />
+      </option>
+      <module name="banco-api" />
+      <selectedOptions>
+        <option name="environmentVariables" />
+      </selectedOptions>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="banco_api.BancoApiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClienteServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="envFilePaths">
+        <option value="$PROJECT_DIR$/v6-microservices/cliente-service/.env" />
+      </option>
+      <module name="cliente-service" />
+      <selectedOptions>
+        <option name="environmentVariables" />
+      </selectedOptions>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="banco_api.cliente_service.ClienteServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContaServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="envFilePaths">
+        <option value="$PROJECT_DIR$/v6-microservices/conta-service/.env" />
+      </option>
+      <module name="conta-service" />
+      <selectedOptions>
+        <option name="environmentVariables" />
+      </selectedOptions>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="banco_api.conta_service.ContaServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="banco_api.eureka_server.EurekaServerApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="banco_api.eureka_server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.ContaServiceTest" />
+      <item itemvalue="JUnit.PessoaServiceTest" />
+      <item itemvalue="JUnit.service in banco-api" />
+      <item itemvalue="Spring Boot.EurekaServerApplication" />
+      <item itemvalue="Spring Boot.BancoApiApplication" />
+      <item itemvalue="Spring Boot.ClienteServiceApplication" />
+      <item itemvalue="Spring Boot.AuthServiceApplication" />
+      <item itemvalue="Spring Boot.ContaServiceApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.EurekaServerApplication" />
         <item itemvalue="Spring Boot.BancoApiApplication" />
-        <item itemvalue="JUnit.service in banco-api" />
         <item itemvalue="JUnit.ContaServiceTest" />
+        <item itemvalue="Spring Boot.EurekaServerApplication" />
+        <item itemvalue="JUnit.service in banco-api" />
         <item itemvalue="JUnit.PessoaServiceTest" />
       </list>
     </recent_temporary>
@@ -195,7 +247,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
       </set>
     </attachedChunks>
   </component>
@@ -208,5 +261,8 @@
       <updated>1778957258303</updated>
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
