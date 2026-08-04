@@ -1,6 +1,5 @@
 package banco_api.conta_service.events;
 
-import banco_api.conta_service.events.TransferenciaRealizadaEvent;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 

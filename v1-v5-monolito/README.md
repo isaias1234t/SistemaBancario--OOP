@@ -18,7 +18,7 @@ API REST de um sistema bancário desenvolvida com **Java 21 + Spring Boot 3**, e
 
 ## 🌐 API em Produção
 
-* **Documentação Interativa (Swagger):** [Acessar Interface Swagger](https://sistemabancario-oop-1-32l5.onrender.com/swagger-ui/index.html)
+* **Documentação Interativa (Swagger):** [Acessar Interface Swagger](https://sistemabancario-oop.onrender.com/swagger-ui/index.html)
 
 > ⚠️ O serviço está hospedado no plano gratuito do Render. A primeira requisição pode demorar até 30 segundos para a instância inicializar.
 

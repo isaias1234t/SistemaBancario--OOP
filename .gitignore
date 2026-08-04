@@ -12,3 +12,5 @@ target/
 
 # OS
 .DS_Store
+
+v6-microservices/conta-service/src/test/resources/application.yml

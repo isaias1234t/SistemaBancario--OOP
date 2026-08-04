@@ -3,9 +3,9 @@ package banco_api.auth_service.service;
 import banco_api.auth_service.dto.LoginDTO;
 import banco_api.auth_service.dto.RegistroDTO;
 import banco_api.auth_service.exception.CredenciaisInvalidasException;
+import banco_api.auth_service.model.Role;
 import banco_api.auth_service.model.Usuario;
 import banco_api.auth_service.repository.UsuarioRepository;
-import banco_api.auth_service.service.JwtService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,8 @@ public class AuthService {
 
     public Usuario registrar(RegistroDTO dto) {
         String senhaCodificada = passwordEncoder.encode(dto.getSenha());
-        Usuario usuario = new Usuario(dto.getEmail(), senhaCodificada, dto.getRole());
+        Role role = dto.getRole() != null ? dto.getRole() : Role.USER;
+        Usuario usuario = new Usuario(dto.getEmail(), senhaCodificada, role);
         usuarioRepository.save(usuario);
         log.info("Usuário registrado com sucesso! Usuário: {}", usuario);
         return usuario;
