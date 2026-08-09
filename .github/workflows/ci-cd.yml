@@ -1,0 +1,134 @@
+name: CI/CD
+
+on:
+  push:
+    paths:
+      - v6-microservices/**
+
+jobs:
+  detect:
+    outputs:
+      eureka-server: ${{steps.detect-changed-services.outputs.eureka-server}}
+      api-gateway: ${{steps.detect-changed-services.outputs.api-gateway}}
+      auth-service: ${{steps.detect-changed-services.outputs.auth-service}}
+      cliente-service: ${{steps.detect-changed-services.outputs.cliente-service}}
+      conta-service: ${{steps.detect-changed-services.outputs.conta-service}}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: detect-changed-services
+        id: detect-changed-services
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            
+            eureka-server:
+              - 'v6-microservices/eureka-server/**'
+            
+            api-gateway:
+              - 'v6-microservices/api-gateway/**'
+            
+            auth-service:
+              - 'v6-microservices/auth-service/**'
+            
+            cliente-service:
+              - 'v6-microservices/cliente-service/**'
+            
+            conta-service:
+              - 'v6-microservices/conta-service/**'
+
+  build:
+    needs: detect
+
+    runs-on: ubuntu-latest
+
+    if: ${{ needs.detect.outputs.eureka-server == 'true' ||
+      needs.detect.outputs.api-gateway == 'true' ||
+      needs.detect.outputs.auth-service == 'true' ||
+      needs.detect.outputs.cliente-service == 'true' ||
+      needs.detect.outputs.conta-service == 'true'
+      }}
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup-java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: cache-maven-dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+
+      - name: build-changed-services
+        run: |
+          if [ "${{ needs.detect.outputs.eureka-server }}" == "true" ]; then
+            mvn package -f v6-microservices/eureka-server/pom.xml -DskipTests
+          fi
+          if [ "${{ needs.detect.outputs.api-gateway }}" == "true" ]; then
+            mvn package -f v6-microservices/api-gateway/pom.xml -DskipTests
+          fi
+          if [ "${{ needs.detect.outputs.auth-service }}" == "true" ]; then
+            mvn package -f v6-microservices/auth-service/pom.xml -DskipTests
+          fi
+          if [ "${{ needs.detect.outputs.cliente-service }}" == "true" ]; then
+            mvn package -f v6-microservices/cliente-service/pom.xml -DskipTests
+          fi
+          if [ "${{ needs.detect.outputs.conta-service }}" == "true" ]; then
+            mvn package -f v6-microservices/conta-service/pom.xml -DskipTests
+          fi
+          
+  test:
+    needs: [detect, build]
+
+    runs-on: ubuntu-latest
+
+    if: ${{ needs.detect.outputs.eureka-server == 'true' ||
+      needs.detect.outputs.api-gateway == 'true' ||
+      needs.detect.outputs.auth-service == 'true' ||
+      needs.detect.outputs.cliente-service == 'true' ||
+      needs.detect.outputs.conta-service == 'true'
+      }}
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup-java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: cache-maven-dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+
+      - name: test-changed-services
+        run: |
+          if [ "${{ needs.detect.outputs.eureka-server }}" == "true" ]; then
+            mvn test -f v6-microservices/eureka-server/pom.xml
+          fi
+          if [ "${{ needs.detect.outputs.api-gateway }}" == "true" ]; then
+            mvn test -f v6-microservices/api-gateway/pom.xml
+          fi
+          if [ "${{ needs.detect.outputs.auth-service }}" == "true" ]; then
+            mvn test -f v6-microservices/auth-service/pom.xml
+          fi
+          if [ "${{ needs.detect.outputs.cliente-service }}" == "true" ]; then
+            mvn test -f v6-microservices/cliente-service/pom.xml
+          fi
+          if [ "${{ needs.detect.outputs.conta-service }}" == "true" ]; then
+            mvn test -f v6-microservices/conta-service/pom.xml
+          fi
