@@ -25,10 +25,11 @@ import java.util.concurrent.TimeUnit;
 @Tag("integration")
 public class ContaConcorrenciaTest {
 
-    //Injeção do service e repository
+    //Injeção do service
     @Autowired
     private ContaService contaService;
 
+    //Injeção do repository
     @Autowired
     private ContaRepository contaRepository;
 
