@@ -34,7 +34,7 @@ public abstract class ContaBancaria {
         this.transacoes = new ArrayList<>();
     }
 
-    //FUNÇÕES
+    //Métodos da classe
     public void depositar(BigDecimal valor){
         if(valor.compareTo(BigDecimal.ZERO) <= 0){
             throw new ValorInvalidoException("Erro, valor inválido! o valor a ser depositado DEVE ser maior que 0 (zero)!");
