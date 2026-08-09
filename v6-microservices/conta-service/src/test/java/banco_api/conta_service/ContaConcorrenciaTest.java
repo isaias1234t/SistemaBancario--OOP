@@ -7,6 +7,7 @@ import banco_api.conta_service.model.ContaCorrente;
 import banco_api.conta_service.repository.ContaRepository;
 import banco_api.conta_service.service.ContaService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 @SpringBootTest
 @DirtiesContext
 @TestPropertySource(locations = "classpath:application-test.properties")
+@Tag("integration")
 public class ContaConcorrenciaTest {
 
     //Injeção do service e repository
