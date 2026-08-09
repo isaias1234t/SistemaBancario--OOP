@@ -135,5 +135,5 @@ jobs:
             mvn test -Dgroups='!integration' -f v6-microservices/cliente-service/pom.xml
           fi
           if [ "${{ needs.detect.outputs.conta-service }}" == "true" ]; then
-            mvn test -Dgroups='!integration' -f v6-microservices/conta-service/pom.xml
+            mvn test -e -Dgroups='!integration' -f v6-microservices/conta-service/pom.xml
           fi
