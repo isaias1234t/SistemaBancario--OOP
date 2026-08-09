@@ -115,9 +115,6 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
 
-      - name: debug-env
-        run: echo "URL=$CONTA_DATABASE_URL"
-
       - name: test-changed-services
         env:
           CONTA_DATABASE_URL: ${{ secrets.CONTA_DATABASE_URL }}
@@ -138,5 +135,5 @@ jobs:
             mvn test -Dgroups='!integration' -f v6-microservices/cliente-service/pom.xml
           fi
           if [ "${{ needs.detect.outputs.conta-service }}" == "true" ]; then
-            mvn test -e -Dgroups='!integration' -f v6-microservices/conta-service/pom.xml
+            mvn test -Dgroups='!integration' -f v6-microservices/conta-service/pom.xml
           fi
