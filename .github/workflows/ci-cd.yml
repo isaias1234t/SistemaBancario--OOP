@@ -117,9 +117,9 @@ jobs:
 
       - name: test-changed-services
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DATABASE_USER: ${{ secrets.DATABASE_USER }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_URL: ${{ secrets.CONTA_DATABASE_URL }}
+          DATABASE_USER: ${{ secrets.CONTA_DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.CONTA_DATABASE_PASSWORD }}
 
         run: |
           if [ "${{ needs.detect.outputs.eureka-server }}" == "true" ]; then
