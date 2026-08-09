@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 public class ContaCorrente extends ContaBancaria {
     private BigDecimal limite;
 
+    //Construtor
     public ContaCorrente(Long pessoaId, BigDecimal limite) {
         super(pessoaId);
         this.limite = limite;
