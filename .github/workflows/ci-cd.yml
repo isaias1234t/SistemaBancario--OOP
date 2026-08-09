@@ -115,6 +115,9 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
 
+      - name: debug-env
+        run: echo "URL=$CONTA_DATABASE_URL"
+
       - name: test-changed-services
         env:
           DATABASE_URL: ${{ secrets.CONTA_DATABASE_URL }}
