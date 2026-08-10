@@ -7,6 +7,7 @@
 [![Apache Kafka](https://img.shields.io/badge/Messaging-Kafka_KRaft-black?logo=apachekafka)](https://kafka.apache.org/)
 [![Flyway](https://img.shields.io/badge/Migrations-Flyway-red?logo=flyway)](https://flywaydb.org/)
 [![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)](https://www.docker.com/)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-black?logo=githubactions)](https://github.com/isaias1234t/SistemaBancario--OOP/actions)
 
 A V6 desmembra o monolito em microsserviços independentes com Spring Cloud. Cada serviço tem seu próprio banco de dados, ciclo de vida e responsabilidade de negócio. Toda a arquitetura sobe com um único comando Docker Compose.
 
@@ -72,6 +73,7 @@ Cliente HTTP
 | Migrações | Flyway |
 | Containerização | Docker + Docker Compose |
 | Build | Maven (Multi-stage Docker build) |
+| CI/CD | GitHub Actions (pipeline seletivo por serviço) |
 
 ---
 
@@ -221,6 +223,26 @@ v6-microservices/
     ├── Dockerfile
     └── src/
 ```
+
+---
+
+## ⚙️ CI/CD
+
+O pipeline de integração contínua roda automaticamente no GitHub Actions a cada push em `v6-microservices/**`.
+
+**Estratégia:** detecção seletiva por serviço — só reconstrói e testa o que realmente mudou.
+
+```
+detect → build → test
+```
+
+| Job | O que faz |
+|---|---|
+| `detect` | Identifica quais serviços foram alterados no push (`dorny/paths-filter`) |
+| `build` | Compila apenas os serviços alterados (`mvn package -DskipTests`) |
+| `test` | Executa os testes unitários dos serviços alterados (`mvn test -Dgroups='!integration'`) |
+
+> Testes de integração são excluídos do pipeline por dependerem de infraestrutura externa (Neon, Kafka).
 
 ---
 

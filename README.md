@@ -6,6 +6,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-blue?logo=postgresql)](https://neon.tech/)
 [![Apache Kafka](https://img.shields.io/badge/Messaging-Apache_Kafka-black?logo=apachekafka)](https://kafka.apache.org/)
 [![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)](https://www.docker.com/)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-black?logo=githubactions)](https://github.com/isaias1234t/SistemaBancario--OOP/actions)
 
 Repositório único que documenta a **evolução completa de um sistema bancário**, do zero absoluto até uma arquitetura de microsserviços com Spring Cloud.
 
@@ -33,6 +34,7 @@ SistemaBancario--OOP/
 | **V4** | Observabilidade completa | Logs JSON + Prometheus/Grafana + Zipkin |
 | **V5** | Event-Driven com Kafka | Operações financeiras publicam eventos de domínio |
 | **V6** | Microsserviços + Spring Cloud | Separação de responsabilidades, escalabilidade independente |
+| **V6.1** | CI/CD com GitHub Actions | Pipeline seletivo por serviço — detect → build → test |
 
 ---
 
